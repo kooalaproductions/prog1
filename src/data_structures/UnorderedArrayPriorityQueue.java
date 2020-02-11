@@ -51,8 +51,7 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
                 highElement = array[i];
             }
         }
-        for(int i = highPriority; i < currentSize - 1; i++)
-        {
+        for(int i = highPriority; i < currentSize - 1; i++){
             array[i] = array[i + 1];
         }
         currentSize--;
@@ -71,10 +70,8 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
         }
 
         int highPriority = 0;
-        for(int i = 1; i < currentSize; i++)
-        {
-            if(((Comparable<E>)array[i]).compareTo(array[highPriority]) > 0)
-            {
+        for(int i = 1; i < currentSize; i++){
+            if(((Comparable<E>)array[i]).compareTo(array[highPriority]) > 0){
                 highPriority = i;
             }
         }
@@ -82,23 +79,28 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
     }
 
     @Override
-    public boolean contains(E obj) {
+    public boolean contains(E obj) {//checks to see if an object matches with the object parameter
+        for(int i = 0; i < currentSize; i++){
+            if (((Comparable<E>) obj).compareTo(((E) array[i])) == 0){
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public int size() {
-        return 0;
+    public int size() {//returns the numbers of objects in queue
+        return currentSize;
     }
 
     @Override
-    public void clear() {
-
+    public void clear() {//sets queue to empty
+        currentSize = 0;
     }
 
     @Override
-    public boolean isEmpty() {
-        return false;
+    public boolean isEmpty() {//checks to see if the queue is empty
+        return currentSize == 0;
     }
 
     @Override
