@@ -13,6 +13,17 @@ import java.util.Iterator;
 
 public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements PriorityQueue<E> {
     private E[] array;
+    private int maxSize;
+
+
+    public UnorderedArrayPriorityQueue(){//first constructor
+        this(DEFAULT_MAX_CAPACITY);
+    }
+
+    public UnorderedArrayPriorityQueue(int size){//second constructor
+        maxSize = size;
+    }
+
 
     @Override
     public boolean insert(E object) {
@@ -63,6 +74,6 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
     public Iterator<E> iterator() {
         return null;
     }
-    
+
 
     }
