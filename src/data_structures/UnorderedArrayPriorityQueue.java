@@ -9,5 +9,18 @@
 
 package data_structures;
 
-public class UnorderedArrayPriorityQueue {
+import java.util.Iterator;
+
+public class UnorderedArrayPriorityQueue <E> implements Comparable<E>, Iterable<E> {
+    private E[] array;
+
+    @Override
+    public int compareTo(E o) {
+        return 0;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 }
