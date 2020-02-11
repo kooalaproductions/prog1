@@ -14,6 +14,7 @@ import java.util.Iterator;
 public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements PriorityQueue<E> {
     private E[] array;
     private int maxSize;
+    private int currentSize;
 
 
     public OrderedArrayPriorityQueue(){//first constructor
@@ -22,6 +23,8 @@ public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements Prio
 
     public OrderedArrayPriorityQueue(int size){//second constructor
         maxSize = size;
+        currentSize =0;
+        array = (E[]) new Object[maxSize];
     }
 
     @Override

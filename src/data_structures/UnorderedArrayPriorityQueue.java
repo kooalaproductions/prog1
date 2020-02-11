@@ -61,15 +61,18 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
 
     @Override
     public boolean delete(E obj) {
-        if(isEmpty()){
+        if(isEmpty()){//returns false if empty
             return false;
         }
-        return false;
+        else if(contains(obj)){//returns false if there is not match
+            return false;
+        }
+        return true;
     }
 
     @Override
     public E peek() {//checks to see what object has the highest priority
-        if(isEmpty()){
+        if(isEmpty()){//returns null if empty
             return null;
         }
 
@@ -79,7 +82,7 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
                 highPriority = i;
             }
         }
-        return array[highPriority];
+        return array[highPriority];//returns but does not remove
     }
 
     @Override
