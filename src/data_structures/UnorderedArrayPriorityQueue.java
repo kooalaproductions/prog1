@@ -10,6 +10,7 @@
 package data_structures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements PriorityQueue<E> {
     private E[] array;
@@ -60,6 +61,9 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
 
     @Override
     public boolean delete(E obj) {
+        if(isEmpty()){
+            return false;
+        }
         return false;
     }
 
@@ -104,13 +108,40 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
     }
 
     @Override
-    public boolean isFull() {
-        return false;
+    public boolean isFull() {//checks to see if the queue is full
+        return currentSize == maxSize;
     }
 
     @Override
-    public Iterator<E> iterator() {
-        return null;
+    public Iterator<E> iterator() {//returns objects unsorted
+        return new Iterator<E>(){
+            private int counter = 0;
+            private int iteratorIndex = 0;
+
+            public boolean hasNext(){
+                return counter < currentSize;
+            }
+
+            public E next(){
+                if(!hasNext()){
+                    throw new NoSuchElementException();
+                }
+
+                iteratorIndex = counter;
+                counter++;
+                return array[counter - 1];
+            }
+
+            public void remove(){
+                if(iteratorIndex != counter)
+                    counter--;
+
+                for(int i = counter; i < currentSize - 1; i++){
+                    array[i] = array[i + 1];
+                }
+                currentSize--;
+            }
+        };
     }
 
 
