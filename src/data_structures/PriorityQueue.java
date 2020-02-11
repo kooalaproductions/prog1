@@ -41,4 +41,4 @@ public interface PriorityQueue<E extends Comparable <E>> extends Iterable<E> {
     // order.
     public Iterator<E> iterator();
 
-} 
+}
