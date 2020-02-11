@@ -11,16 +11,58 @@ package data_structures;
 
 import java.util.Iterator;
 
-public class UnorderedArrayPriorityQueue <E> implements Comparable<E>, Iterable<E> {
+public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements PriorityQueue<E> {
     private E[] array;
 
     @Override
-    public int compareTo(E o) {
+    public boolean insert(E object) {
+        return false;
+    }
+
+    @Override
+    public E remove() {
+        return null;
+    }
+
+    @Override
+    public boolean delete(E obj) {
+        return false;
+    }
+
+    @Override
+    public E peek() {
+        return null;
+    }
+
+    @Override
+    public boolean contains(E obj) {
+        return false;
+    }
+
+    @Override
+    public int size() {
         return 0;
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean isFull() {
+        return false;
     }
 
     @Override
     public Iterator<E> iterator() {
         return null;
     }
-}
+    
+
+    }
