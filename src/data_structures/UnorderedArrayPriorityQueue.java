@@ -65,8 +65,20 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
     }
 
     @Override
-    public E peek() {
-        return null;
+    public E peek() {//checks to see what object has the highest priority
+        if(isEmpty()){
+            return null;
+        }
+
+        int highPriority = 0;
+        for(int i = 1; i < currentSize; i++)
+        {
+            if(((Comparable<E>)array[i]).compareTo(array[highPriority]) > 0)
+            {
+                highPriority = i;
+            }
+        }
+        return array[highPriority];
     }
 
     @Override
