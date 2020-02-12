@@ -99,22 +99,22 @@ public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements Prio
 
     @Override
     public int size() {
-        return 0;
+        return currentSize;
     }
 
     @Override
     public void clear() {
-
+        currentSize = 0;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return currentSize == 0;
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return currentSize == maxSize;
     }
 
     @Override
