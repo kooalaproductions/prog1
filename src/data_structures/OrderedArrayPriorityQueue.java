@@ -28,13 +28,45 @@ public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements Prio
     }
 
     @Override
-    public boolean insert(E object) {
-        return false;
+    public boolean insert(E object) {//insert object into queue
+        if(isFull()) {//will check if full
+            return false;
+        }
+        int num = 0;
+        while(num < currentSize && ((Comparable<E>)array[num]).compareTo(object) <= 0){
+            num++;
+        }
+
+        for(int curry = currentSize; curry > num; curry--){
+            array[curry] = array[curry - 1];
+        }
+        array[num] = object;
+        currentSize++;
+
+        return true;
     }
 
     @Override
     public E remove() {
-        return null;
+        if(isEmpty()){//returns null if empty
+            return null;
+        }
+        int highPriority = 0;
+        E highElement = array[0];
+
+        for(int i = 1; i < currentSize; i++){
+            if(((Comparable<E>)array[i]).compareTo(highElement) > 0){
+                highPriority = i;
+                highElement = array[i];
+            }
+        }
+
+        for(int i = highPriority; i < currentSize - 1; i++){
+            array[i] = array[i + 1];
+        }
+        currentSize--;
+
+        return highElement;//returns object of high priority and has been in the queue the longest
     }
 
     @Override
@@ -43,12 +75,25 @@ public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements Prio
     }
 
     @Override
-    public E peek() {
-        return null;
+    public E peek() {//checks to see what object has the highest priority
+        if(isEmpty()){//returns null if empty
+            return null;
+        }
+
+        int highPriority = 0;
+        for(int i = 1; i < currentSize; i++){
+            if(((Comparable<E>)array[i]).compareTo(array[highPriority]) > 0){
+                highPriority = i;
+            }
+        }
+        return array[highPriority];//returns but does not remove
     }
 
     @Override
-    public boolean contains(E obj) {
+    public boolean contains(E obj) {//checks to see if an object matches with the object parameter
+        for(int i = 0; i < currentSize; i++)
+            if(((Comparable<E>) obj).compareTo(((E) array[i])) == 0)
+                return true;
         return false;
     }
 
