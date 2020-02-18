@@ -116,7 +116,7 @@ public class UnorderedArrayPriorityQueue <E extends Comparable<E>> implements Pr
     }
 
     @Override
-    public Iterator<E> iterator() {//returns objects unsorted
+    public Iterator<E> iterator() {//returns objects in queue
         return new Iterator<E>(){
             private int counter = 0;
             private int iteratorIndex = 0;

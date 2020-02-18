@@ -10,6 +10,7 @@
 package data_structures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements PriorityQueue<E> {
     private E[] array;
@@ -118,7 +119,34 @@ public class OrderedArrayPriorityQueue <E extends Comparable<E>> implements Prio
     }
 
     @Override
-    public Iterator<E> iterator() {
-        return null;
+    public Iterator<E> iterator() {//returns objects in queue
+        return new Iterator<E>(){
+            private int counter = 0;
+            private int iteratorIndex = 0;
+
+            public boolean hasNext(){
+                return counter < currentSize;
+            }
+
+            public E next(){
+                if(!hasNext()){
+                    throw new NoSuchElementException();
+                }
+
+                iteratorIndex = counter;
+                counter++;
+                return array[counter - 1];
+            }
+
+            public void remove(){
+                if(iteratorIndex != counter)
+                    counter--;
+
+                for(int i = counter; i < currentSize - 1; i++){
+                    array[i] = array[i + 1];
+                }
+                currentSize--;
+            }
+        };
     }
 }
